@@ -22,6 +22,8 @@ int getInput(char* str){
 char* tokens;
 //set prompt and get input
 tokens= readline("witsshell> ");
+//control what happens when ctrl+D is pressed
+if (tokens==NULL) exit(0);
 //add to history
 if(strlen(tokens)!=0){
 	//put input in history using readline history library
