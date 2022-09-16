@@ -54,18 +54,18 @@ pid_t pid = fork();
 //check for err
 if (pid==-1){
 	//Print err message
-	printf("\nError, failed forking...\nResetting");
+	printf("\nAn error has occured\n");
 	return;
 
 }else if(pid ==0){
 	//if successfull fork but err executing
 if(execvp(parsed[0],parsed)<0){
-		printf("\nError, failed executing...\nResetting");
+		printf("\nAn error has occured\n");
 		}
 		
 exit(0);
 }else{
-//wait for chiled
+//wait for child process
 wait(NULL);
 return;
  }
@@ -80,13 +80,13 @@ void execPiped(char** parsed, char** parsedpipe){
 	pid_t p1,p2;
 	//if pipe err
 	if(pipe(pipefd)<0){
-		printf("\nError, pipe couldnt be initialized");
+		printf("\nAn error has occured\n");
 		return;
 	}
 	//fork first process
 	p1=fork();
 	if(p1<0){
-		printf("\nError, couldnt fork");
+		printf("\nAn error has occured\n");
 		return;
 	}
 	if(p1==0){
@@ -97,7 +97,7 @@ void execPiped(char** parsed, char** parsedpipe){
 		dup2(pipefd[1],STDOUT_FILENO);
 		close(pipefd[1]);
 		if(execvp(parsed[0],parsed)<0){
-			printf("\nError executing first command... \nRestarting");
+			printf("\nAn error has occured\n");
 				exit(0);
 		}
 	}
@@ -105,7 +105,7 @@ void execPiped(char** parsed, char** parsedpipe){
 			//parent execution
 			p2=fork();
 			if(p2<0){
-				printf("\nError Forking");
+				printf("\nAn error has occured");
 				return;
 			}
 			//child 2 execution
@@ -115,7 +115,7 @@ void execPiped(char** parsed, char** parsedpipe){
 				dup2(pipefd[0],STDIN_FILENO);
 				close(pipefd[0]);
 				if(execvp(parsedpipe[0],parsedpipe)<0){
-					printf("\nError executing second command... \nRestarting");
+					printf("\nAn error has occured\n");
 					exit(0);
 				}
 				else{
@@ -160,7 +160,7 @@ int cmdHandler(char** parsed){
 	}
 	switch (switchArg){
 		case 1:
-			printf("\nBye\n");
+			printf("Bye\n");
 			exit(0);
 		case 2:
 			chdir(parsed[1]);
