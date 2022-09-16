@@ -160,7 +160,6 @@ int cmdHandler(char** parsed){
 	}
 	switch (switchArg){
 		case 1:
-			printf("Bye\n");
 			exit(0);
 		case 2:
 			chdir(parsed[1]);
