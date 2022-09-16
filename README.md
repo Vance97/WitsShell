@@ -8,7 +8,8 @@
 <pre>
 
 📦operating-systems-project
-  📦scripts
+ ┣ 📦scripts
+  ┣ 📜scripts.sh
  ┣ 📜.makefile.swp
  ┣ 📜.shell.swp
  ┣ 📜README.md
