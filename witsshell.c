@@ -130,19 +130,9 @@ void execPiped(char** parsed, char** parsedpipe){
 
 }
 }
-
-//built in help command
-void openHelp(){
-puts("\nSupported commands:"
-	"\ncd"
-	"\nls"
-	"\nexit"
-	"\nAll unix commands"
-	"\nPiping"
-	"\nSpace handling"
-		
-		);
-return;
+//built in path command
+void addToPath(){
+	
 }
 
 //built in command handling
@@ -152,7 +142,7 @@ int cmdHandler(char** parsed){
 	//basic command handler 
 	listOfCmds[0]="exit";
 	listOfCmds[1]="cd";
-	listOfCmds[2]="help";
+	listOfCmds[2]="path";
 	
 	for (i=0; i<noOfCmds; i++){
 		if(strcmp(parsed[0],listOfCmds[i])==0){
@@ -167,7 +157,7 @@ int cmdHandler(char** parsed){
 			chdir(parsed[1]);
 			return 1;
 		case 3:
-			openHelp();
+			addToPath();
 			return 1;
 		default:
 			break;
